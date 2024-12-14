@@ -1,7 +1,9 @@
 from llama_index.core import Document, SummaryIndex
 from llama_index.core.node_parser import SimpleNodeParser
 from llama_index.readers.wikipedia import WikipediaReader
+import logging
 
+logging.basicConfig(level=logging.DEBUG)
 loader = WikipediaReader()
 documents = loader.load_data(pages=["Messi Lionel"])
 parser = SimpleNodeParser.from_defaults()
