@@ -2,10 +2,7 @@ from llama_index.core import Settings
 from llama_index.core.extractors import QuestionsAnsweredExtractor
 from llama_index.core.llms.mock import MockLLM
 from llama_index.core.schema import TextNode
-from llama_index.core.callbacks import (
-    CallbackManager, 
-    TokenCountingHandler
-)
+from llama_index.core.callbacks import CallbackManager, TokenCountingHandler
 
 llm = MockLLM(max_tokens=256)
 counter = TokenCountingHandler(verbose=False)
@@ -15,14 +12,11 @@ Settings.llm = llm
 Settings.callback_manager = CallbackManager([counter])
 
 sample_text = (
-    "LlamaIndex is a powerful tool used "
-    "to create efficient indices from data."
+    "LlamaIndex is a powerful tool used " "to create efficient indices from data."
 )
-nodes= [TextNode(text=sample_text)]
+nodes = [TextNode(text=sample_text)]
 
-extractor = QuestionsAnsweredExtractor(
-    show_progress=False
-)
+extractor = QuestionsAnsweredExtractor(show_progress=False)
 
 Questions_metadata = extractor.extract(nodes)
 

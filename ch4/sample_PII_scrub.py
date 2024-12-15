@@ -10,10 +10,5 @@ original = (
 
 node = TextNode(text=original)
 processor = NERPIINodePostprocessor()
-
-clean_nodes = processor.postprocess_nodes(
-    [NodeWithScore(node=node)]
-)
-
+clean_nodes = processor.postprocess_nodes([NodeWithScore(node=node)])
 print(clean_nodes[0].node.get_text())
-
