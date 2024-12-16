@@ -9,16 +9,13 @@ token_counter = TokenCountingHandler(
 )
 callback_manager = CallbackManager([token_counter])
 
-Settings.callback_manager=callback_manager
-Settings.llm=llm
+Settings.callback_manager = callback_manager
+Settings.llm = llm
 
 documents = SimpleDirectoryReader("cost_prediction_samples").load_data()
 
 index = TreeIndex.from_documents(
-    documents=documents,
-    num_children=2,
-    show_progress=True)
+    documents=documents, num_children=2, show_progress=True
+)
 
 print("Total LLM Token Count:", token_counter.total_llm_token_count)
-
-
